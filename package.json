@@ -1,0 +1,22 @@
+{
+  "name": "twitterfavbot",
+  "version": "1.0.0",
+  "description": "simple twitter fav bot",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iFonny/TwitterFavBot.git"
+  },
+  "author": "iFonny",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iFonny/TwitterFavBot/issues"
+  },
+  "homepage": "https://github.com/iFonny/TwitterFavBot#readme",
+  "dependencies": {
+    "twit": "^2.2.9"
+  }
+}

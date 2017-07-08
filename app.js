@@ -61,7 +61,7 @@ let fav = (account, tweet) => {
             account.post('favorites/create', {
                 id: tweet.id_str
             });
-        }, 5000);
+        }, 10000);
     }
 };
 

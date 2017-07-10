@@ -27,7 +27,7 @@ let favstream = main.stream('statuses/filter', {
 });
 
 let favstreamTwitelo = twitelo.stream('statuses/filter', {
-    track: ['league of legends', 'mmr', 'ranked', 'twitelo', 'diamant', 'diamond']
+    track: ['league of legends', 'mmr', 'ranked', 'twitelo', 'yasuo', 'riven']
 });
 
 let rtstream = proverbe.stream('statuses/filter', {
@@ -55,7 +55,7 @@ favstream.on('tweet', function (tweet) {
 favstreamTwitelo.on('tweet', function (tweet) {
     if (tweet.user.lang == LANG && !tweet.user.name.toLowerCase().includes('mmr')
         && !tweet.user.screen_name.toLowerCase().includes('mmr')
-        && !tweet.retweeted_status) favTwitelo(main, tweet);
+        && !tweet.retweeted_status) favTwitelo(twitelo, tweet);
 });
 
 rtstream.on('tweet', function (tweet) {

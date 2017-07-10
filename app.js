@@ -15,8 +15,19 @@ const proverbe = new Twitter({
     access_token_secret: config.proverbe.access_token_secret
 });
 
+const twitelo = new Twitter({
+    consumer_key: config.twitelo.consumer_key,
+    consumer_secret: config.twitelo.consumer_secret,
+    access_token: config.twitelo.access_token,
+    access_token_secret: config.twitelo.access_token_secret
+});
+
 let favstream = main.stream('statuses/filter', {
     track: ['velkoz', 'gland', 'ori', 'syndra', 'rakan', 'sense8']
+});
+
+let favstreamTwitelo = twitelo.stream('statuses/filter', {
+    track: ['league of legends', 'mmr', 'ranked', 'twitelo', 'diamant', 'diamond']
 });
 
 let rtstream = proverbe.stream('statuses/filter', {
@@ -25,18 +36,26 @@ let rtstream = proverbe.stream('statuses/filter', {
 
 // FAVLIMIT/10 secondes
 const FAVLIMIT = 5;
+const FAVLIMITTWITELO = 10;
 // RTLIMIT/1 minutes
 const RTLIMIT = 1;
 
 const LANG = 'fr';
 
 let favlimit = 0;
+let favlimitTwitelo = 0;
 let rtlimit = 0;
 
 
 // Streams on tweet
 favstream.on('tweet', function (tweet) {
     if (tweet.user.lang == LANG && !tweet.retweeted_status) fav(main, tweet);
+});
+
+favstreamTwitelo.on('tweet', function (tweet) {
+    if (tweet.user.lang == LANG && !tweet.user.name.toLowerCase().includes('mmr')
+        && !tweet.user.screen_name.toLowerCase().includes('mmr')
+        && !tweet.retweeted_status) favTwitelo(main, tweet);
 });
 
 rtstream.on('tweet', function (tweet) {
@@ -65,14 +84,29 @@ let fav = (account, tweet) => {
     }
 };
 
+let favTwitelo = (account, tweet) => {
+        favlimitTwitelo++;
+        setTimeout(() => {
+            account.post('favorites/create', {
+                id: tweet.id_str
+            });
+        }, 10000);
+    }
+};
+
 /* Loop reset limits */
 
 setInterval(() => {
-    console.log(`Nombre de tweets fav durant les 10 dernieres secondes : ${favlimit}`)
+    console.log(`(iFonny_) Nombre de tweets fav durant les 10 dernieres secondes : ${favlimit}`)
     favlimit = 0;
 }, 10000);
 
 setInterval(() => {
-    console.log(`Nombre de tweets rt durant la derniere minute : ${rtlimit}`)
+    console.log(`(TwiteloFR) FRNombre de tweets fav durant les 10 dernieres secondes : ${favlimitTwitelo}`)
+    favlimitTwitelo = 0;
+}, 10000);
+
+setInterval(() => {
+    console.log(`(Mrproverbe) Nombre de tweets rt durant la derniere minute : ${rtlimit}`)
     rtlimit = 0;
 }, 60000);

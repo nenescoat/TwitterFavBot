@@ -27,7 +27,7 @@ let favstream = main.stream('statuses/filter', {
 });
 
 let favstreamTwitelo = twitelo.stream('statuses/filter', {
-    track: ['league of legends', 'mmr', 'ranked', 'twitelo', 'yasuo', 'riven']
+    track: ['league of legends', 'mmr', 'ranked', 'twitelo', 'yasuo', 'riven', 'lyon esport', 'cassiopeai', 'draven', 'anivia', 'taliyah', 'high elo']
 });
 
 let rtstream = proverbe.stream('statuses/filter', {

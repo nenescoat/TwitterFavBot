@@ -85,6 +85,7 @@ let fav = (account, tweet) => {
 };
 
 let favTwitelo = (account, tweet) => {
+    if (favlimitTwitelo < FAVLIMITTWITELO) {
         favlimitTwitelo++;
         setTimeout(() => {
             account.post('favorites/create', {

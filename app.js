@@ -102,7 +102,7 @@ setInterval(() => {
 }, 10000);
 
 setInterval(() => {
-    console.log(`(TwiteloFR) FRNombre de tweets fav durant les 10 dernieres secondes : ${favlimitTwitelo}`)
+    console.log(`(TwiteloFR) Nombre de tweets fav durant les 10 dernieres secondes : ${favlimitTwitelo}`)
     favlimitTwitelo = 0;
 }, 10000);
 

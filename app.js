@@ -36,7 +36,7 @@ let rtstream = proverbe.stream('statuses/filter', {
 
 // FAVLIMIT/10 secondes
 const FAVLIMIT = 5;
-const FAVLIMITTWITELO = 10;
+const FAVLIMITTWITELO = 5;
 // RTLIMIT/1 minutes
 const RTLIMIT = 1;
 

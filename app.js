@@ -28,19 +28,12 @@ let favstream = main.stream('statuses/filter', {
 
 let favstreamTwitelo = twitelo.stream('statuses/filter', {
     track: ['league of legends', 'mmr', 'twitelo', 'lyon esport', 'high elo',
-        'Aatrox', 'Ahri', 'Akali', 'Alistar', 'Amumu', 'Anivia', 'Annie', 'Ashe', 'Aurelion', 'Azir',
-        'Bard', 'Blitz', 'Brand', 'Braum', 'Caitlyn', 'Camille', 'Cassiopeia', 'Chogath', 'Corki', 'Darius',
-        'Diana', 'Dr. Mundo', 'Draven', 'Ekko', 'Elise', 'Evelynn', 'Ezreal', 'Fiddle', 'Fiora', 'Fizz', 'Galio',
-        'Gangplank', 'Garen', 'Gnar', 'Gragas', 'Graves', 'Hecarim', 'Heimerdinger', 'Illaoi', 'Irelia', 'Ivern',
-        'Janna', 'Jarvan', 'Jax', 'Jayce', 'Jhin', 'Jinx', 'Kalista', 'Karma', 'Karthus', 'Kassadin', 'Katarina',
-        'Kayle', 'Kennen', 'KhaZix', 'Kindred', 'Kled', 'KogMaw', 'LeBlanc', 'Lee Sin', 'Leona', 'Lissandra', 'Lucian',
-        'Lulu', 'Lux', 'Malphite', 'Malzahar', 'Maokai', 'MYi', 'Miss Fortune', 'Mordekaiser', 'Morgana', 'Nami',
-        'Nasus', 'Nautilus', 'Nidalee', 'Nocturne', 'Nunu', 'Olaf', 'Orianna', 'Pantheon', 'Poppy', 'Quinn', 'Rammus',
-        'RekSai', 'Renekton', 'Rengar', 'Riven', 'Rumble', 'Ryze', 'Sejuani', 'Shaco', 'Shen', 'Shyvana', 'Singed',
-        'Sion', 'Sivir', 'Skarner', 'Sona', 'Soraka', 'Swain', 'Syndra', 'Tahm', 'Taliyah', 'Talon', 'Taric', 'Teemo',
-        'Thresh', 'Tristana', 'Trundle', 'Tryndamere', 'Twisted Fate', 'Twitch', 'Udyr', 'Urgot', 'Varus', 'Vayne', 
-        'Veigar', 'VelKoz', 'Viktor', 'Vladimir', 'Volibear', 'Warwick', 'Wukong', 'Xerath', 'Xin Zhao', 'Yasuo', 
-        'Yorick', 'Zed', 'Ziggs', 'Zilean', 'Zyra'
+        'Aatrox', 'Akali', 'Alistar', 'Amumu', 'Anivia', 'Blitzcrank', 'Chogath',
+        'Ezreal', 'Fiddlestick', 'Galio', 'Gangplank', 'Garen', 'Gragas', 'Hecarim', 'Heimerdinger', 'Illaoi', 'Irelia',
+        'Jarvan', 'Kassadin', 'KhaZix', 'Kindred', 'KogMaw', 'Lee Sin', 'Lissandra', 'Malphite', 'Malzahar', 'Maokai',
+        'Mordekaiser', 'Nasus', 'Nidalee', 'Rammus', 'RekSai', 'Renekton', 'Riven', 'Sejuani', 'Singed',
+        'Skarner', 'Syndra', 'Taric', 'Teemo', 'Thresh', 'Tryndamere', 'Twisted Fate','Udyr', 'Urgot', 'Varus', 'Vayne',
+        'Veigar', 'VelKoz', 'Volibear', 'Wukong', 'Xerath', 'Yasuo', 'Ziggs', 'Zilean'
     ]
 });
 
@@ -70,7 +63,7 @@ favstream.on('tweet', function (tweet) {
 favstreamTwitelo.on('tweet', function (tweet) {
     if (tweet.user.lang == LANG && !tweet.user.name.toLowerCase().includes('mmr') &&
         !tweet.user.screen_name.toLowerCase().includes('mmr') &&
-        !tweet.retweeted_status && !tweet.source.toLowerCase().includes('google')) favTwitelo(twitelo, tweet);
+        !tweet.retweeted_status) favTwitelo(twitelo, tweet);
 });
 
 rtstream.on('tweet', function (tweet) {

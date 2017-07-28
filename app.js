@@ -27,7 +27,21 @@ let favstream = main.stream('statuses/filter', {
 });
 
 let favstreamTwitelo = twitelo.stream('statuses/filter', {
-    track: ['league of legends', 'mmr', 'ranked', 'twitelo', 'yasuo', 'riven', 'lyon esport', 'cassiopeai', 'draven', 'anivia', 'taliyah', 'high elo', '#Summerhouse']
+    track: ['league of legends', 'mmr', 'twitelo', 'lyon esport', 'high elo',
+        'Aatrox', 'Ahri', 'Akali', 'Alistar', 'Amumu', 'Anivia', 'Annie', 'Ashe', 'Aurelion', 'Azir',
+        'Bard', 'Blitz', 'Brand', 'Braum', 'Caitlyn', 'Camille', 'Cassiopeia', 'Chogath', 'Corki', 'Darius',
+        'Diana', 'Dr. Mundo', 'Draven', 'Ekko', 'Elise', 'Evelynn', 'Ezreal', 'Fiddle', 'Fiora', 'Fizz', 'Galio',
+        'Gangplank', 'Garen', 'Gnar', 'Gragas', 'Graves', 'Hecarim', 'Heimerdinger', 'Illaoi', 'Irelia', 'Ivern',
+        'Janna', 'Jarvan', 'Jax', 'Jayce', 'Jhin', 'Jinx', 'Kalista', 'Karma', 'Karthus', 'Kassadin', 'Katarina',
+        'Kayle', 'Kennen', 'KhaZix', 'Kindred', 'Kled', 'KogMaw', 'LeBlanc', 'Lee Sin', 'Leona', 'Lissandra', 'Lucian',
+        'Lulu', 'Lux', 'Malphite', 'Malzahar', 'Maokai', 'MYi', 'Miss Fortune', 'Mordekaiser', 'Morgana', 'Nami',
+        'Nasus', 'Nautilus', 'Nidalee', 'Nocturne', 'Nunu', 'Olaf', 'Orianna', 'Pantheon', 'Poppy', 'Quinn', 'Rammus',
+        'RekSai', 'Renekton', 'Rengar', 'Riven', 'Rumble', 'Ryze', 'Sejuani', 'Shaco', 'Shen', 'Shyvana', 'Singed',
+        'Sion', 'Sivir', 'Skarner', 'Sona', 'Soraka', 'Swain', 'Syndra', 'Tahm', 'Taliyah', 'Talon', 'Taric', 'Teemo',
+        'Thresh', 'Tristana', 'Trundle', 'Tryndamere', 'Twisted Fate', 'Twitch', 'Udyr', 'Urgot', 'Varus', 'Vayne', 
+        'Veigar', 'VelKoz', 'Viktor', 'Vladimir', 'Volibear', 'Warwick', 'Wukong', 'Xerath', 'Xin Zhao', 'Yasuo', 
+        'Yorick', 'Zed', 'Ziggs', 'Zilean', 'Zyra'
+    ]
 });
 
 let rtstream = proverbe.stream('statuses/filter', {
@@ -36,9 +50,9 @@ let rtstream = proverbe.stream('statuses/filter', {
 
 // FAVLIMIT/30 secondes
 const FAVLIMIT = 1;
-// FAVLIMIT/1 minutes
+// FAVLIMIT/5 minutes
 const FAVLIMITTWITELO = 1;
-// RTLIMIT/1 minutes
+// RTLIMIT/2 minutes
 const RTLIMIT = 1;
 
 const LANG = 'fr';
@@ -54,9 +68,9 @@ favstream.on('tweet', function (tweet) {
 });
 
 favstreamTwitelo.on('tweet', function (tweet) {
-    if (tweet.user.lang == LANG && !tweet.user.name.toLowerCase().includes('mmr')
-        && !tweet.user.screen_name.toLowerCase().includes('mmr')
-        && !tweet.retweeted_status) favTwitelo(twitelo, tweet);
+    if (tweet.user.lang == LANG && !tweet.user.name.toLowerCase().includes('mmr') &&
+        !tweet.user.screen_name.toLowerCase().includes('mmr') &&
+        !tweet.retweeted_status && !tweet.source.toLowerCase().includes('google')) favTwitelo(twitelo, tweet);
 });
 
 rtstream.on('tweet', function (tweet) {
@@ -92,7 +106,7 @@ let favTwitelo = (account, tweet) => {
             account.post('favorites/create', {
                 id: tweet.id_str
             });
-        }, 10000);
+        }, 20000);
     }
 };
 
@@ -104,11 +118,11 @@ setInterval(() => {
 }, 30000);
 
 setInterval(() => {
-    console.log(`(TwiteloFR) Nombre de tweets fav durant la derniere minute : ${favlimitTwitelo}`)
+    console.log(`(TwiteloFR) Nombre de tweets fav durant les 5 dernieres minutes : ${favlimitTwitelo}`)
     favlimitTwitelo = 0;
-}, 60000);
+}, 300000);
 
 setInterval(() => {
-    console.log(`(Mrproverbe) Nombre de tweets rt durant la derniere minute : ${rtlimit}`)
+    console.log(`(Mrproverbe) Nombre de tweets rt durant les 2 dernieres minutes : ${rtlimit}`)
     rtlimit = 0;
-}, 60000);
+}, 120000);

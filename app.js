@@ -2,10 +2,11 @@ const Twitter = require('twit');
 const config = require('./config.json');
 
 const main = new Twitter({
-    consumer_key: config.main.consumer_key,
-    consumer_secret: config.main.consumer_secret,
-    access_token: config.main.access_token,
-    access_token_secret: config.main.access_token_secret
+    consumer_key: config.main.ihfzAcSqoRjLrX7Kli3n7Ji7Y,
+    consumer_secret: config.main.W1IsBCs7YcKOs5L918EfHxlq2f301dMCaT1zRIJ80dntyUrFOX,
+    access_token: config.main.720308220477059072-UwW59EXotWHQ73bSMnlOm2Kh5ZHAyKG,
+    access_token_secret: config.main.Z3aN6NfWcOg0s48iDgAluW36KMGzCs0DBmfq1wBbqYRDy
+
 });
 
 const proverbe = new Twitter({

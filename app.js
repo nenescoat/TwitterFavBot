@@ -24,7 +24,7 @@ const twitelo = new Twitter({
 });
 
 let favstream = main.stream('statuses/filter', {
-    track: ['velkoz', 'ori', 'syndra', 'rakan', 'sense8']
+    track: ['acabo de correr', 'ori', 'syndra', 'rakan', 'sense8']
 });
 
 let favstreamTwitelo = twitelo.stream('statuses/filter', {
